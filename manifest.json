@@ -1,0 +1,39 @@
+{
+    "manifest_version": 2,
+    "name" : "ReferenceUSA Scraper",
+    "version" : "0.1",
+    "description" : "Scrape Data Tables From ReferenceUSA", 
+    "commands": {
+        "scrape-profile": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+E",
+                "mac": "Command+Shift+E"
+
+            },
+            "description": "Scrape the table."
+        }
+    },
+
+    "content_scripts" : [
+        {
+            "matches": ["http://www.referenceusa.com/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "background" : {
+        "scripts" : ["background.js"],
+        "persistent" : false
+    },
+    "permissions" : [
+        "declarativeContent", 
+        "activeTab", 
+        "contextMenus", 
+        "notifications",
+        "tabs",
+        "https://script.google.com/macros/s/"
+    ],
+    "icons": { "16": "16.png",
+               "48": "48.png",
+               "128": "128.png" },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
